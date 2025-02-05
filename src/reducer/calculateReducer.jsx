@@ -1,6 +1,6 @@
 export const initialState = {
-    input: "",
-    previousInput: "",
+    number: "",
+    prevNumber: "",
     operator: null,
 };
 
@@ -9,21 +9,21 @@ const calculateReducer = (state, action) => {
         case "NUMBER":
             return {
                 ...state,
-                input: state.input + action.payload,
+                number: state.number + action.payload,
             };
 
         case "OPERATOR":
             return {
-                previousInput: state.input,
-                input: "",
+                prevNumber: state.number,
+                number: "",
                 operator: action.payload,
             };
 
         case "CALCUL":
-            if (!state.previousInput || !state.input || !state.operator) return state;
+            if (!state.prevNumber || !state.number || !state.operator) return state;
 
-            const prev = parseFloat(state.previousInput);
-            const current = parseFloat(state.input);
+            const prev = parseFloat(state.prevNumber);
+            const current = parseFloat(state.number);
             let result = 0;
 
             switch (state.operator) {
@@ -41,8 +41,8 @@ const calculateReducer = (state, action) => {
             }
 
             return {
-                input: result.toString(),
-                previousInput: "",
+                number: result.toString(),
+                prevNumber: "",
                 operator: null,
             };
 

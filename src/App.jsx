@@ -1,12 +1,12 @@
 import './App.css'
-import Input from './component/Input'
 import Buttons from './component/Buttons'
+import Display from './component/Display'
 
 function App() {
 
   return (
     <div className='container'>
-      <Input />
+      <Display />
       <Buttons />
     </div>
   )
